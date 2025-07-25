@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import './App.css';
 
@@ -15,20 +15,20 @@ function App() {
   // Use relative API URLs for deployment compatibility
   const API_BASE = process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:5000/api';
 
-  useEffect(() => {
-    if (user) {
-      fetchCrops();
-    }
-  }, [user]);
-
-  const fetchCrops = async () => {
+  const fetchCrops = useCallback(async () => {
     try {
       const response = await axios.get(`${API_BASE}/crops`);
       setCrops(response.data);
     } catch (error) {
       console.error('Error fetching crops:', error);
     }
-  };
+  }, [API_BASE]);
+
+  useEffect(() => {
+    if (user) {
+      fetchCrops();
+    }
+  }, [user, fetchCrops]);
 
   const addCrop = async (e) => {
     e.preventDefault();
