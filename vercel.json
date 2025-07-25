@@ -1,0 +1,36 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "farming-app/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "farming-app/build"
+      }
+    },
+    {
+      "src": "farming-backend/index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "farming-backend/index.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "farming-app/build/$1"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/farming-backend/index.js"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/farming-app/build/index.html"
+    }
+  ]
+}

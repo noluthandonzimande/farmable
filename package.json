@@ -1,9 +1,31 @@
 {
+  "name": "farming-management-system",
+  "version": "1.0.0",
+  "description": "Full-stack farming management system with React frontend and Express backend",
+  "main": "index.js",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "scripts": {
+    "install-all": "npm install && cd farming-app && npm install && cd ../farming-backend && npm install",
+    "build": "cd farming-app && npm run build",
+    "start": "cd farming-backend && npm start",
+    "dev-frontend": "cd farming-app && npm start",
+    "dev-backend": "cd farming-backend && npm run dev",
+    "dev": "concurrently \"npm run dev-backend\" \"npm run dev-frontend\""
+  },
   "dependencies": {
     "@types/leaflet": "^1.9.20",
     "axios": "^1.10.0",
     "dotenv": "^17.2.0",
     "leaflet": "^1.9.4",
     "react-leaflet": "^5.0.0"
-  }
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  },
+  "keywords": ["farming", "agriculture", "react", "express", "mongodb", "fullstack"],
+  "author": "",
+  "license": "ISC"
 }

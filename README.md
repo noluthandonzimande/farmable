@@ -146,6 +146,55 @@ npm audit fix
 
 This project is open source and available under the [MIT License](LICENSE).
 
+## 🚀 Deployment
+
+### Deploy to Vercel (Recommended)
+
+1. **Connect your repository** to Vercel
+2. **Set environment variables** in Vercel dashboard:
+   ```
+   MONGO_URI=your_mongodb_connection_string
+   NODE_ENV=production
+   ```
+3. **Deploy** - Vercel will automatically use the `vercel.json` configuration
+
+### Deploy to Netlify
+
+1. **Connect your repository** to Netlify
+2. **Set build settings**:
+   - Build command: `npm run build`
+   - Publish directory: `farming-app/build`
+3. **Set environment variables**:
+   ```
+   MONGO_URI=your_mongodb_connection_string
+   NODE_ENV=production
+   ```
+
+### Deploy Backend Separately
+
+For production, you might want to deploy the backend separately:
+
+**Backend deployment options:**
+- Railway
+- Render
+- Heroku
+- DigitalOcean App Platform
+
+**Frontend deployment options:**
+- Vercel
+- Netlify
+- GitHub Pages (static)
+
+### Environment Variables for Production
+
+Make sure to set these environment variables in your deployment platform:
+
+```env
+MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/farming_db
+NODE_ENV=production
+PORT=5000
+```
+
 ## 🔮 Future Enhancements
 
 - [ ] Map integration with Leaflet for field visualization
